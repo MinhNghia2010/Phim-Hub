@@ -25,10 +25,6 @@
    ```sh
    npm run format
    ```
-4. **Lint code:**
-   ```sh
-   npm run lint
-   ```
 
 ## Project Structure
 

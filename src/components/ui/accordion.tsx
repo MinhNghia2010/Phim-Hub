@@ -29,7 +29,7 @@ function AccordionTrigger({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
   return (
-    <AccordionPrimitive.Header className="flex justify-between w-full">
+    <AccordionPrimitive.Header className="flex w-full justify-between">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(

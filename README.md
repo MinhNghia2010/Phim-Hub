@@ -38,4 +38,3 @@
 - Edit `src/index.css` for custom utilities and fluid spacing
 - Update genre and carousel logic in `PageCarousel.tsx`
 - Add new devices or FAQ items in their respective components
-

@@ -12,7 +12,7 @@ function HomePage() {
       {/* Hero Section */}
       <NavBar currentPage="home" />
 
-      <div className="animate-fade-in absolute top-0 flex min-h-[90vh] w-full items-center justify-center bg-[url('Background.svg')] mask-y-from-50% mask-y-to-100% bg-cover bg-center">
+      <div className="animate-fade-in absolute top-0 flex min-h-[90vh] w-full items-center justify-center bg-[url('Background.png')] mask-y-from-50% mask-y-to-100% bg-cover bg-center">
         <img
           src="/Logo/Abstract Design.svg"
           alt="Design"

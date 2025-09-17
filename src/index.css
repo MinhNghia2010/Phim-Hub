@@ -93,10 +93,15 @@
 
   html {
     scroll-behavior: smooth;
+    transition: all 0.3s;
   }
 }
 
 @layer utilities {
+  .logo-width {
+    width: clamp(200px, 30vw, 470px);
+    height: clamp(200px, 30vw, 470px);
+  }
   .mb-fluid {
     margin-bottom: clamp(20px, 7.69vw, 120px);
   }
@@ -126,12 +131,6 @@
     width: 100%;
     border-radius: 100%;
   }
-  @media (min-width: 1280px) {
-    .containerBox {
-      margin-left: clamp(80px, 8.33vw, 160px);
-      margin-right: clamp(80px, 8.33vw, 160px);
-    }
-  }
   .bg-gradient-red {
     background: linear-gradient(
       to top right,
@@ -142,4 +141,19 @@
       var(--color-red-transparent-1) 100%
     );
   }
+  .nav-padding{
+    padding-left: clamp(16px, 7vw, 80px);
+    padding-right: clamp(16px, 7vw, 80px);
+  }
+  @media (min-width: 1280px) {
+    .containerBox {
+      margin-left: clamp(80px, 8.33vw, 160px);
+      margin-right: clamp(80px, 8.33vw, 160px);
+    }
+    .nav-padding{
+      padding-left: clamp(80px, 8.33vw, 160px);
+      padding-right: clamp(80px, 8.33vw, 160px);
+    }
+  }
+  
 }

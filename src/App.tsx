@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import HomePage from "./pages/HomePage";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  if (loading) return <LoadingScreen />;
   return (
-    <>
-      {loading ? (
-        <LoadingScreen onComplete={() => setLoading(false)} />
-      ) : (
-        <div className="bg-background min-h-screen">
-          <HomePage />
-        </div>
-      )}
-    </>
+    <div className="bg-background min-h-screen">
+      <HomePage />
+    </div>
   );
 }
 

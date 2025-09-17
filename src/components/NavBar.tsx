@@ -14,7 +14,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { cn } from "@/lib/utils";
-import { Bell, Search } from "lucide-react";
+import { Bell, Search, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface NavBarProps {
@@ -74,8 +74,8 @@ function NavBar({ currentPage }: NavBarProps) {
     };
   return (
     <>
-    <nav className={cn("fixed left-0 z-40 flex w-full items-center justify-between px-40 transition-all duration-200"
-      , isScrolled ? "backdrop-blur-lg backdrop-brightness-50 top-0 py-3" : "bg-transparent top-7"
+    <nav className={cn("fixed left-0 z-40 flex w-full items-center justify-between nav-padding transition-all duration-200"
+      , isScrolled ? "backdrop-blur-lg backdrop-brightness-50 top-0 py-6" : "bg-transparent top-7"
     )}>
       <div className="logo top-3 z-40 flex items-center gap-1">
         <img src="/Logo/PageLogo.svg" alt="Logo" />
@@ -112,7 +112,9 @@ function NavBar({ currentPage }: NavBarProps) {
           </MenubarMenu>
         </Menubar>
         {/* Mobile Menu */}
-      <div className="btn-container top-8 right-40 z-50 flex items-center gap-8">
+        
+
+      <div className="hidden top-8 right-40 z-50 xl:flex items-center gap-8">
         <Search size={25} className="text-white hover:cursor-pointer" />
         <Bell size={25} className="text-white hover:cursor-pointer" />
       </div>

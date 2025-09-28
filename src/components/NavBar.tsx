@@ -148,12 +148,12 @@ function NavBar({ currentPage }: NavBarProps) {
             {/* Offcanvas panel */}
             <div
               className={cn(
-                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[100vw] md:w-[40vw] flex-col border-l transition-transform duration-300",
+                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[70vw] md:w-[40vw] flex-col border-l transition-transform duration-300",
                 isMenuOpen ? "translate-x-0" : "translate-x-full",
               )}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="offcanvas-top-padding max-[426px]:items-center max-[426px]:justify-center flex h-full flex-col items-start justify-start space-y-8 pl-8">
+              <div className="offcanvas-top-padding flex h-full flex-col items-start justify-start space-y-8 pl-8">
                 {navItems.map((item) => (
                   <a
                     key={item.key}

@@ -5,9 +5,27 @@ import HomePage from "./pages/HomePage";
 const API_KEY = "a9c39bb873d5f77ae71c9fca8b9b641e";
 const BASE_URL = "https://api.themoviedb.org/3";
 
+export interface Movie {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string;
+  backdrop_path: string;
+  vote_average: number;
+  release_date: string;
+  genre_ids: number[];
+}
+
+export interface MovieData {
+  popular: Movie[];
+  trending: Movie[];
+  topRated: Movie[];
+  upcoming: Movie[];
+}
+
 function App() {
   const [loading, setLoading] = useState(true);
-  // const [movieData, setMovieData] = useState<any>(null);
+  const [movieData, setMovieData] = useState<MovieData | null>(null);
 
   useEffect(() => {
     const fetchAllMovies = async () => {
@@ -53,7 +71,7 @@ function App() {
   if (loading) return <LoadingScreen />;
   return (
     <div className="bg-background min-h-screen">
-      <HomePage />
+      <HomePage movieData={movieData} />
     </div>
   );
 }

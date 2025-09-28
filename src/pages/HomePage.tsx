@@ -12,12 +12,14 @@ import ToggleSwitch, {
 import Pricing from "@/components/HomePage/Pricing";
 import { useState } from "react";
 import CTA from "@/components/CTA";
+import { type MovieData } from "@/App";
+import MovieSection from "@/components/HomePage/MovieSection";
 
-// interface HomePageProps {
-//   movieData?: any;
-// }
+interface HomePageProps {
+  movieData?: MovieData | null;
+}
 
-function HomePage() {
+function HomePage({ movieData }: HomePageProps) {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
   return (
     <>
@@ -60,6 +62,17 @@ function HomePage() {
       <div className="containerBox flex flex-col gap-[150px]">
         {/* Categories */}
         <PageCarousel />
+        
+        {/* Movie Sections */}
+        {movieData && (
+          <div className="flex w-full flex-col gap-16">
+            <MovieSection title="Popular Movies" movies={movieData.popular} />
+            <MovieSection title="Trending Now" movies={movieData.trending} />
+            <MovieSection title="Top Rated" movies={movieData.topRated} />
+            <MovieSection title="Coming Soon" movies={movieData.upcoming} />
+          </div>
+        )}
+        
         {/* Devices */}
         <div className="flex w-full flex-col">
           <div className="subContainer">

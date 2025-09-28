@@ -1,4 +1,4 @@
-import { type Movie } from "@/App";
+import { type Movie } from "@/contexts/MovieContext";
 
 interface MovieSectionProps {
   title: string;

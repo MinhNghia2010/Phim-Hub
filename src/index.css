@@ -162,6 +162,11 @@
       padding-right: clamp(80px, 8.33vw, 160px);
     }
   }
+  @media (min-width:1024px){
+    .offcanvas-top-padding{
+      padding-top: clamp(120px, 10vw, 180px);
+    }
+  }
 }
 
 /* Hide scrollbars globally */

@@ -8,6 +8,7 @@ import SupportPage from "./pages/SupportPage.tsx";
 import SubscriptionPage from "./pages/SubcriptionPage.tsx";
 import MoviesAndShowsPage from "./pages/Movies&ShowsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import { MovieProvider } from "./contexts/MovieContext.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <MovieProvider>
+      <RouterProvider router={router} />
+    </MovieProvider>
   </StrictMode>,
 );

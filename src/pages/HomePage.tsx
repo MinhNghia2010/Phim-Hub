@@ -12,15 +12,12 @@ import ToggleSwitch, {
 import Pricing from "@/components/HomePage/Pricing";
 import { useState } from "react";
 import CTA from "@/components/CTA";
-import { type MovieData } from "@/App";
-import MovieSection from "@/components/HomePage/MovieSection";
+import Footer from "@/components/Footer";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
-interface HomePageProps {
-  movieData?: MovieData | null;
-}
-
-function HomePage({ movieData }: HomePageProps) {
+function HomePage() {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  useScrollToHash();
   return (
     <>
       {/* Hero Section */}
@@ -37,7 +34,7 @@ function HomePage({ movieData }: HomePageProps) {
       <div className="containerBox">
         <div className="subContainer mt-[clamp(45vh+150px,45vh+25vw,45vh+435px)] flex w-full flex-col items-center">
           <div className="textContainer px-auto z-30 max-w-[1096px] px-4 text-center sm:px-0">
-            <h1 className="mb-5 text-3xl text-white sm:text-5xl xl:text-6xl">
+            <h1 className="mb-5 text-3xl text-white sm:text-4xl lg:text-5xl 2xl:text-6xl">
               The Best Streaming Experience
             </h1>
             <p className="text-grey-60 text-sm xl:text-lg">
@@ -61,20 +58,11 @@ function HomePage({ movieData }: HomePageProps) {
 
       <div className="containerBox flex flex-col gap-[150px]">
         {/* Categories */}
-        <PageCarousel />
-        
-        {/* Movie Sections */}
-        {movieData && (
-          <div className="flex w-full flex-col gap-16">
-            <MovieSection title="Popular Movies" movies={movieData.popular} />
-            <MovieSection title="Trending Now" movies={movieData.trending} />
-            <MovieSection title="Top Rated" movies={movieData.topRated} />
-            <MovieSection title="Coming Soon" movies={movieData.upcoming} />
-          </div>
-        )}
-        
+        <div id="categories-section">
+          <PageCarousel />
+        </div>
         {/* Devices */}
-        <div className="flex w-full flex-col">
+        <div id="devices-section" className="flex w-full flex-col">
           <div className="subContainer">
             <TextContainer
               title="We Provide you streaming experience across various devices."
@@ -84,7 +72,7 @@ function HomePage({ movieData }: HomePageProps) {
           <DevicesCard />
         </div>
         {/* FAQ's */}
-        <div className="flex w-full flex-col">
+        <div id="faq-section" className="flex w-full flex-col">
           <div className="subContainer relative flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center lg:gap-20">
             <TextContainer
               title="Frequently Asked Questions"
@@ -95,7 +83,7 @@ function HomePage({ movieData }: HomePageProps) {
           <FAQ />
         </div>
         {/* Pricing */}
-        <div className="flex w-full flex-col">
+        <div id="pricing-section" className="flex w-full flex-col">
           <div className="subContainer flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center lg:gap-16">
             <TextContainer
               title="Choose the plan that’s right for you."
@@ -109,6 +97,7 @@ function HomePage({ movieData }: HomePageProps) {
         <CTA />
       </div>
       {/* Footer */}
+      <Footer />
     </>
   );
 }

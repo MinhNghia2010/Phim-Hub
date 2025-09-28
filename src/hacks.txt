@@ -1,0 +1,55 @@
+footer scroll:
+----
+const getNavbarHeight = () => {
+        const testElement = document.createElement('div');
+        testElement.className = 'offcanvas-top-padding';
+        testElement.style.visibility = 'hidden';
+        document.body.appendChild(testElement);
+        const height = parseInt(window.getComputedStyle(testElement).paddingTop);
+        document.body.removeChild(testElement);
+        return height;
+    };
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const navbarHeight = getNavbarHeight();
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navbarHeight;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const handleLinkClick = (header: string, link: string) => {
+        if (header === "Home") {
+            // Navigate to home page and scroll to section
+            const sectionMap: { [key: string]: string } = {
+                "Categories": "categories-section",
+                "Devices": "devices-section", 
+                "Pricing": "pricing-section",
+                "FAQ's": "faq-section"
+            };
+            
+            const sectionId = sectionMap[link];
+            if (sectionId) {
+                // If already on home page, scroll to section
+                if (window.location.pathname === "/" || window.location.pathname === "/home") {
+                    scrollToSection(sectionId);
+                } else {
+                    // Navigate to home page with hash
+                    window.location.href = `/#${sectionId}`;
+                }
+            }
+        } else if (header === "Movies" || header === "Shows") {
+            // Navigate to movies page
+            window.location.href = "/movies-and-shows";
+        } else if (header === "Support") {
+            window.location.href = "/support";
+        } else if (header === "Subscription") {
+            window.location.href = "/subscription";
+        }
+    };

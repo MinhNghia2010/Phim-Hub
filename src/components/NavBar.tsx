@@ -153,14 +153,14 @@ function NavBar({ currentPage }: NavBarProps) {
               )}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="offcanvas-top-padding flex h-full flex-col items-start justify-start space-y-8 pl-8">
+              <div className="offcanvas-top-padding max-[426px]:items-center max-[426px]:justify-center flex h-full flex-col items-start justify-start space-y-8 pl-8">
                 {navItems.map((item) => (
                   <a
                     key={item.key}
                     href={item.href}
                     onClick={handleNavClick}
                     className={cn(
-                      "text-xs font-light text-white md:text-base",
+                      "text-xs font-light text-white md:text-base text-center",
                       currentPage === item.key
                         ? "pointer-events-none underline"
                         : "hover:underline",

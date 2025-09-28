@@ -1,12 +1,24 @@
-import DevicesCard from "@/components/DevicesCard";
-import FAQ from "@/components/FAQ";
+import DevicesCard from "@/components/HomePage/DevicesCard";
+import FAQ from "@/components/HomePage/FAQ";
 import NavBar from "@/components/NavBar";
-import PageCarousel from "@/components/PageCarousel";
+import PageCarousel from "@/components/HomePage/PageCarousel";
 import TextContainer from "@/components/TextContainer";
+import FAQButton from "@/components/HomePage/FAQButton";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import ToggleSwitch, {
+  type BillingPeriod,
+} from "@/components/HomePage/ToggleSwitch";
+import Pricing from "@/components/HomePage/Pricing";
+import { useState } from "react";
+import CTA from "@/components/CTA";
 
-function HomePage() {
+interface HomePageProps {
+  movieData?: any;
+}
+
+function HomePage({ movieData }: HomePageProps) {
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
   return (
     <>
       {/* Hero Section */}
@@ -60,19 +72,28 @@ function HomePage() {
         </div>
         {/* FAQ's */}
         <div className="flex w-full flex-col">
-          <div className="subContainer relative justify-between">
+          <div className="subContainer relative flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center lg:gap-20">
             <TextContainer
               title="Frequently Asked Questions"
               description="Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about PhimHub."
             />
-            <Button className="bg-red-45 ml-20 h-min w-min px-[14px] py-5 text-sm font-bold text-white xl:px-[18px] xl:py-6 xl:text-lg">
-              Ask a Question
-            </Button>
+            <FAQButton />
           </div>
           <FAQ />
         </div>
         {/* Pricing */}
+        <div className="flex w-full flex-col">
+          <div className="subContainer flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center lg:gap-16">
+            <TextContainer
+              title="Choose the plan that’s right for you."
+              description="Join us and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
+            />
+            <ToggleSwitch value={billingPeriod} onChange={setBillingPeriod} />
+          </div>
+          <Pricing billingPeriod={billingPeriod} />
+        </div>
         {/* CTA */}
+        <CTA />
       </div>
       {/* Footer */}
     </>

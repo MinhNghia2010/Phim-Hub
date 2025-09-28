@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "../ui/button";
+import { Card, CardHeader, CardTitle } from "../ui/card";
 
 interface GenreCardProps {
   img: string;
@@ -9,10 +9,9 @@ interface GenreCardProps {
 
 function GenreCard({ img, genre }: GenreCardProps) {
   return (
-    <Card className="border-black-15 bg-black-10 hover:hover:text-red-45 border-1 p-5 text-sm text-white sm:p-6 sm:text-[1rem] xl:p-8 xl:text-lg">
-      <div className="relative">
-        <img src={img} alt={genre} />
-        <div className="fade-cover-up h-full"></div>
+    <Card className="border-black-15 bg-black-10 hover:border-red-45 flex aspect-[6/7] flex-col border-1 p-5 text-sm text-white transition-all duration-150 sm:p-6 sm:text-[1rem] xl:text-lg">
+      <div className="relative w-full flex-1 overflow-hidden mask-b-from-50% mask-b-to-100%">
+        <img src={img} alt={genre} className="h-full w-full object-cover" />
       </div>
 
       <div className="flex items-center justify-between">

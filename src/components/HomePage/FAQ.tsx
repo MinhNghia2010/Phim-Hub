@@ -76,33 +76,66 @@ const FAQData = [
 ];
 
 function FAQ() {
+  const mid = Math.ceil(FAQData.length / 2);
+  const firstHalf = FAQData.slice(0, mid);
+  const secondHalf = FAQData.slice(mid);
+
+  const renderItem = (item: (typeof FAQData)[number], index: number) => (
+    <AccordionItem key={index} value={`item-${index + 1}`} className="mb-4">
+      <div className="flex w-auto items-center xl:mt-5">
+        {index < 9 ? (
+          <span className="bg-black-12 border-black-15 my-3 mr-4 ml-3 h-min w-min rounded-xl border-2 px-3 py-2 text-lg text-white xl:px-4 xl:py-3 xl:text-xl">
+            0{index + 1}
+          </span>
+        ) : (
+          <span className="bg-black-12 border-black-15 my-3 mr-4 ml-3 h-min w-min rounded-xl border-2 px-3 py-2 text-lg text-white xl:px-4 xl:py-3 xl:text-xl">
+            {index + 1}
+          </span>
+        )}
+        <AccordionTrigger className="hover:text-red-45 text-base font-medium lg:text-lg xl:text-xl">
+          {item.question}
+        </AccordionTrigger>
+      </div>
+      <AccordionContent className="mx-4 xl:pl-16">
+        {item.answer}
+      </AccordionContent>
+    </AccordionItem>
+  );
+
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="w-full"
-      defaultValue="item-1"
-    >
-      {FAQData.map((item, index) => (
-        <AccordionItem key={index} value={`item-${index + 1}`} className="mb-4">
-          <div className="flex">
-            {index < 9 ? (
-              <span className="bg-black-12 border-black-15 rounded-xl border-2 p-5 text-base text-white xl:text-xl">
-                0{index + 1}
-              </span>
-            ) : (
-              <span className="bg-black-12 border-black-15 rounded-xl border-2 p-5 text-base text-white xl:text-xl">
-                {index + 1}
-              </span>
-            )}
-            <AccordionTrigger>{item.question}</AccordionTrigger>
-          </div>
-          <AccordionContent className="flex flex-col gap-4 text-balance">
-            {item.answer}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <div className="w-full">
+      {/* Mobile/tablet layout */}
+      <div className="lg:hidden">
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          defaultValue="item-1"
+        >
+          {FAQData.map((item, index) => renderItem(item, index))}
+        </Accordion>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-20">
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          defaultValue="item-1"
+        >
+          {firstHalf.map((item, index) => renderItem(item, index))}
+        </Accordion>
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          defaultValue={`item-${mid + 1}`}
+        >
+          {secondHalf.map((item, index) => renderItem(item, index + mid))}
+        </Accordion>
+      </div>
+    </div>
   );
 }
 

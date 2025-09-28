@@ -80,7 +80,7 @@ function NavBar({ currentPage }: NavBarProps) {
         {/* Desktop Menu */}
         <Menubar
           className={cn(
-            "hidden w-auto xl:flex",
+            "hidden w-auto lg:flex",
             isScrolled ? "border-0 bg-transparent" : "",
           )}
         >
@@ -118,10 +118,10 @@ function NavBar({ currentPage }: NavBarProps) {
           </MenubarMenu>
         </Menubar>
         {/* Mobile Menu */}
-        <div className="z-50 xl:hidden">
+        <div className="z-50 lg:hidden">
           <button
             className={cn(
-              "p-2 z-50 relative",
+              "relative z-50 ml-2 p-2",
               isScrolled
                 ? ""
                 : "bg-black-8 border-black-12 rounded-lg border-2",
@@ -129,46 +129,53 @@ function NavBar({ currentPage }: NavBarProps) {
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? 
-              <X
-                size={20}
-                className="text-white"
-              />
-             : 
-              <Menu
-                size={20}
-                className="text-white"
-              />
-            }
+            {isMenuOpen ? (
+              <X size={20} className="text-white" />
+            ) : (
+              <Menu size={20} className="text-white" />
+            )}
           </button>
-          {/* Nav overlay */}
-          <div className={cn("fixed top-0 left-0 w-full h-[calc(100vh)] bg-black/80 z-40 flex flex-col items-center justify-center xl:hidden transition-all duration-300",
-                isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          {/* Nav offcanvas overlay */}
+          <div
+            className={cn(
+              "fixed top-0 left-0 z-40 h-screen w-full bg-black/50 transition-opacity duration-300 lg:hidden",
+              isMenuOpen
+                ? "pointer-events-auto opacity-100"
+                : "pointer-events-none opacity-0",
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {/* Offcanvas panel */}
+            <div
+              className={cn(
+                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[40vw] flex-col border-l transition-transform duration-300",
+                isMenuOpen ? "translate-x-0" : "translate-x-full",
               )}
+              onClick={(e) => e.stopPropagation()}
             >
-            <div className="flex h-full flex-col items-center justify-center space-y-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  onClick={handleNavClick}
-                  className={cn(
-                    "text-sm font-light text-white",
-                    currentPage === item.key
-                      ? "pointer-events-none underline"
-                      : "hover:underline",
-                  )}
-                >
-                  {item.name}
-                </a>
-              ))}
+              <div className="offcanvas-top-padding flex h-full flex-col items-start justify-start space-y-8 pl-8">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    onClick={handleNavClick}
+                    className={cn(
+                      "text-xs font-light text-white md:text-base",
+                      currentPage === item.key
+                        ? "pointer-events-none underline"
+                        : "hover:underline",
+                    )}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
         {/* Right icons */}
 
-
-        <div className="top-8 right-40 z-50 hidden items-center gap-8 xl:flex">
+        <div className="top-8 right-40 z-50 hidden items-center gap-8 lg:flex">
           <Search size={25} className="text-white hover:cursor-pointer" />
           <Bell size={25} className="text-white hover:cursor-pointer" />
         </div>

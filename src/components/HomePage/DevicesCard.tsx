@@ -7,8 +7,6 @@ import {
 import {
   MonitorPlay,
   Smartphone,
-  Tablet,
-  Laptop,
   Gamepad2,
   RectangleGoggles,
 } from "lucide-react";
@@ -27,22 +25,10 @@ const devices: DevicesCardProps[] = [
       "PhimHub is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
-    icon: <Tablet size={28} />,
-    title: "Tablet",
-    description:
-      "PhimHub is optimized for tablets, providing a seamless streaming experience on larger screens.",
-  },
-  {
     icon: <MonitorPlay size={28} />,
     title: "Desktop",
     description:
       "PhimHub is optimized for desktop, delivering the best streaming experience on larger displays.",
-  },
-  {
-    icon: <Laptop size={28} />,
-    title: "Laptop",
-    description:
-      "PhimHub is compatible with a wide range of laptops, allowing you to enjoy your favorite content on the big screen.",
   },
   {
     icon: <Gamepad2 size={28} />,

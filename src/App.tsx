@@ -53,7 +53,7 @@ function App() {
   if (loading) return <LoadingScreen />;
   return (
     <div className="bg-background min-h-screen">
-      <HomePage movieData={movieData} />
+      <HomePage />
     </div>
   );
 }

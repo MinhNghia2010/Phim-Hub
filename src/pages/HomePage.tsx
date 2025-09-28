@@ -13,11 +13,11 @@ import Pricing from "@/components/HomePage/Pricing";
 import { useState } from "react";
 import CTA from "@/components/CTA";
 
-interface HomePageProps {
-  movieData?: any;
-}
+// interface HomePageProps {
+//   movieData?: any;
+// }
 
-function HomePage({ movieData }: HomePageProps) {
+function HomePage() {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
   return (
     <>

@@ -122,7 +122,7 @@ function NavBar({ currentPage }: NavBarProps) {
           <button
             className={cn(
               "relative z-50 ml-2 p-2",
-              isScrolled
+              isScrolled || isMenuOpen
                 ? ""
                 : "bg-black-8 border-black-12 rounded-lg border-2",
             )}
@@ -148,7 +148,7 @@ function NavBar({ currentPage }: NavBarProps) {
             {/* Offcanvas panel */}
             <div
               className={cn(
-                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[40vw] flex-col border-l transition-transform duration-300",
+                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[100vw] md:w-[40vw] flex-col border-l transition-transform duration-300",
                 isMenuOpen ? "translate-x-0" : "translate-x-full",
               )}
               onClick={(e) => e.stopPropagation()}

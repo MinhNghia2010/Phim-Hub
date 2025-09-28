@@ -7,7 +7,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [movieData, setMovieData] = useState<any>(null);
+  // const [movieData, setMovieData] = useState<any>(null);
 
   useEffect(() => {
     const fetchAllMovies = async () => {

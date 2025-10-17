@@ -23,21 +23,21 @@ function HomePage() {
       {/* Hero Section */}
       <NavBar currentPage="home" />
 
-      <div className="animate-fade-in absolute top-0 flex min-h-[90vh] w-full items-center justify-center bg-[url('/Background.png')] mask-y-from-50% mask-y-to-100% bg-cover bg-center">
+      <div className="animate-fade-in absolute top-0 flex min-h-[70vh] w-full items-start justify-center bg-[url('/Background.png')] mask-y-from-50% mask-y-to-100% bg-cover bg-center">
         <img
           src="/Logo/Abstract Design.svg"
           alt="Design"
-          className="animate-fade-in logo-width z-10"
+          className="animate-fade-in logo-width z-10 mt-[20vh]"
         />
       </div>
 
       <div className="containerBox">
-        <div className="subContainer mt-[clamp(45vh+150px,45vh+25vw,45vh+435px)] flex w-full flex-col items-center">
+        <div className="subContainer mt-[clamp(25vh+150px,30vh+25vw,25vh+435px)] flex w-full flex-col items-center">
           <div className="textContainer px-auto z-30 max-w-[1096px] px-4 text-center sm:px-0">
             <h1 className="mb-5 text-3xl text-white sm:text-4xl lg:text-5xl 2xl:text-6xl">
               The Best Streaming Experience
             </h1>
-            <p className="text-grey-60 text-sm xl:text-lg">
+            <p className="text-grey-60 text-sm xl:text-xl md:text-base lg:text-lg">
               PhimHub is the best streaming experience for watching your
               favorite movies and shows on demand, anytime, anywhere. With
               PhimHub, you can enjoy a wide variety of content, including the
@@ -47,7 +47,7 @@ function HomePage() {
             </p>
           </div>
           <Button
-            className="bg-red-45 mb-fluid z-30 mt-[50px] text-lg text-white hover:bg-red-800 active:bg-red-950"
+            className="bg-red-45 z-30 mt-[50px] text-lg text-white hover:bg-red-800 active:bg-red-950"
             size="default"
           >
             <Play size={24} />
@@ -56,7 +56,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="containerBox flex flex-col gap-[150px]">
+      <div className="containerBox flex flex-col gap-20 lg:gap-30 2xl:gap-40">
         {/* Categories */}
         <div id="categories-section">
           <PageCarousel />

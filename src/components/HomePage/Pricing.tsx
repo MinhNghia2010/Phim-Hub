@@ -43,7 +43,7 @@ function Pricing({ billingPeriod }: PricingProps) {
             {plan.description}
           </p>
           <div className="my-8 lg:my-10 xl:my-10">
-            <span className="text-[24px] font-bold text-white md:text-[30px] xl:text-[36px]">
+            <span className="text-2xl font-bold text-white md:text-[30px] xl:text-[36px]">
               {billingPeriod === "monthly"
                 ? plan.priceMonthly
                 : plan.priceYearly}
@@ -52,11 +52,11 @@ function Pricing({ billingPeriod }: PricingProps) {
               {billingPeriod === "monthly" ? " / month" : " / year"}
             </span>
           </div>
-          <div className="flex w-full gap-3 lg:justify-between lg:gap-4 xl:gap-5 max-[426px]:flex-col">
-            <Button className="bg-black-6 border-black-15 rounded-md border-2 py-4 text-sm text-white lg:grow-1 lg:py-5 lg:text-base xl:py-6 2xl:text-lg hover:bg-black active:bg-black-12">
+          <div className="flex w-full gap-3 max-[400px]:flex-col lg:justify-between lg:gap-4 xl:gap-5">
+            <Button className="bg-black-6 border-black-15 active:bg-black-12 rounded-md border-2 py-4 text-sm text-white hover:bg-black lg:grow-1 lg:py-5 lg:text-base xl:py-6 2xl:text-lg">
               Start Free Trial
             </Button>
-            <Button className="bg-red-45 rounded-md py-4 text-sm text-white lg:grow-1 lg:py-5 lg:text-base xl:py-6 2xl:text-lg hover:bg-red-800 active:bg-red-950">
+            <Button className="bg-red-45 rounded-md py-4 text-sm text-white hover:bg-red-800 active:bg-red-950 lg:grow-1 lg:py-5 lg:text-base xl:py-6 2xl:text-lg">
               Choose Plan
             </Button>
           </div>

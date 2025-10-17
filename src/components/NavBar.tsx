@@ -64,7 +64,7 @@ function NavBar({ currentPage }: NavBarProps) {
     <>
       <nav
         className={cn(
-          "nav-padding fixed left-0 z-40 flex w-full items-center justify-between transition-all duration-200",
+          "nav-padding fixed left-0 z-100 flex w-full items-center justify-between transition-all duration-200",
           isScrolled
             ? "top-0 py-3 backdrop-blur-lg backdrop-brightness-50 md:p-4 xl:p-6"
             : "top-7 bg-transparent",
@@ -121,10 +121,7 @@ function NavBar({ currentPage }: NavBarProps) {
         <div className="z-50 lg:hidden">
           <button
             className={cn(
-              "relative z-50 ml-2 p-2",
-              isScrolled || isMenuOpen
-                ? ""
-                : "bg-black-8 border-black-12 rounded-lg border-2",
+              "relative z-50 ml-2 p-2 mt-[3px]",
             )}
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -148,7 +145,7 @@ function NavBar({ currentPage }: NavBarProps) {
             {/* Offcanvas panel */}
             <div
               className={cn(
-                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[70vw] md:w-[40vw] flex-col border-l transition-transform duration-300",
+                "bg-black-6 border-black-15 fixed top-0 right-0 flex h-screen w-[70vw] flex-col border-l transition-transform duration-300 md:w-[40vw]",
                 isMenuOpen ? "translate-x-0" : "translate-x-full",
               )}
               onClick={(e) => e.stopPropagation()}
@@ -160,7 +157,7 @@ function NavBar({ currentPage }: NavBarProps) {
                     href={item.href}
                     onClick={handleNavClick}
                     className={cn(
-                      "text-xs font-light text-white md:text-base text-center",
+                      "text-center text-xs font-light text-white md:text-base",
                       currentPage === item.key
                         ? "pointer-events-none underline"
                         : "hover:underline",

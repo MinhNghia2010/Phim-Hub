@@ -41,17 +41,13 @@ export function MovieProvider({ children }: { children: React.ReactNode }) {
         // Fetch multiple categories of movies
         const [popularRes, trendingRes, topRatedRes, upcomingRes] =
           await Promise.all([
-            fetch(
-              `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
-            ),
+            fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`),
             fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`),
-            fetch(
-              `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
-            ),
-            fetch(
-              `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`,
-            ),
+            fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`),
+            fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`),
           ]);
+        
+        
 
         const [popular, trending, topRated, upcoming] = await Promise.all([
           popularRes.json(),
@@ -59,6 +55,8 @@ export function MovieProvider({ children }: { children: React.ReactNode }) {
           topRatedRes.json(),
           upcomingRes.json(),
         ]);
+
+        console.log({ popular, trending, topRated, upcoming });
 
         setMovieData({
           popular: popular.results,
